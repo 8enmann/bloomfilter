@@ -39,8 +39,19 @@ public class BloomFilter {
 		// Optimal size m, inserted elements m, and false positive probability.
 		// m = - (n ln(p)) / (ln2)^2
 		// Number of hashes k = - ln(p)/ln(2)
-		this.capacity = (int) (-expectedItems * Math.log(falsePositiveRate) / Math.pow(Math.log(2), 2));
-		this.numHashes = (int) (-Math.log(falsePositiveRate) / Math.log(2));
+		this((int) (-expectedItems * Math.log(falsePositiveRate) / Math.pow(Math.log(2), 2)),
+				(int) (-Math.log(falsePositiveRate) / Math.log(2)));
+	}
+
+	/**
+	 * Constructor for users with specific needs.
+	 * @param capacity
+	 * @param numHashes
+	 * @throws NoSuchAlgorithmException
+	 */
+	public BloomFilter(int capacity, int numHashes) throws NoSuchAlgorithmException {
+		this.capacity = capacity;
+		this.numHashes = numHashes;
 		this.store = new BitVector(capacity);
 		this.digester = MessageDigest.getInstance("MD5");
 		this.size = 0;
