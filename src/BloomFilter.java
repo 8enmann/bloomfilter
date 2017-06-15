@@ -29,6 +29,8 @@ public class BloomFilter {
 	 * Based expectedItems and falsePositiveRate, determines the optimal
 	 * capacity and number of hashes to use in the bloom filter.
 	 * 
+	 * https://en.wikipedia.org/wiki/Bloom_filter#Optimal_number_of_hash_functions
+	 * 
 	 * @param expectedItems
 	 * @param falsePositiveRate
 	 * @throws NoSuchAlgorithmException
